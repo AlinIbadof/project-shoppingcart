@@ -7,12 +7,7 @@ function ItemCard(props) {
       <div>Product image</div>
       <div>
         <label htmlFor="quantity">Quantity: </label>
-        <input
-          id="quantity"
-          type="number"
-          placeholder="1"
-          className="quantity"
-        ></input>
+        <input id="quantity" type="number" className="quantity" min={1}></input>
       </div>
       <button onClick={props.addToCart}>Add to cart</button>
     </div>

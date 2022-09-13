@@ -12,13 +12,13 @@ function ShoppingCart(props) {
             </li>
           );
         })}
+        <li>
+          Total: $
+          {props.items.reduce((sum, item) => {
+            return sum + item.price * item.quantity;
+          }, 0)}
+        </li>
       </ul>
-      <p>
-        Total: $
-        {props.items.reduce((sum, item) => {
-          return sum + item.price * item.quantity;
-        }, 0)}
-      </p>
     </div>
   );
 }

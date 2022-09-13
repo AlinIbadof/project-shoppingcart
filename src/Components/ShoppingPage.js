@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import ShoppingCart from "./ShoppingCart";
 
@@ -16,19 +16,38 @@ function ShoppingPage() {
   const [boughtItems, setBoughtItems] = useState([]);
 
   const addToCart = (event) => {
-    // maybe remove the placeholder from the input inside ItemCard.js, and create an if condition:
-    //    if the value is "" (nothing is being input), then do nothing, else do the steps below
-
-    let cardId = event.target.parentNode.id - 1;
-    let shoppedItem = items[cardId];
-    shoppedItem.quantity =
+    // This gets the value of the input element present on each item card
+    let inputValue =
       event.target.parentNode.getElementsByClassName("quantity")[0].value;
 
-    setBoughtItems((prev) => [...prev, shoppedItem]);
+    // Now it checks to see if the value from it is valid, if it is then it proceeds with the code, if not, nothing happens
+    if (inputValue !== "" && inputValue !== "0" && inputValue > 0) {
+      // Getting the id of the object that was clicked
+      let cardId = event.target.parentNode.id - 1;
+      // Setting a variable to be the object with the previously found id, and then setting a new "quantity" property to that object,
+      //that will be equal to the value from the input
+      let shoppedItem = items[cardId];
+      shoppedItem.quantity = inputValue;
 
-    // if the product that should be added to the cart is already in the cart, just update quantity;
-
-    console.log(shoppedItem);
+      //Checking the boughtItems array to see if the product is already present
+      if (boughtItems.filter((e) => e.name === shoppedItem.name).length > 0) {
+        // if it is indeed present, map through the whole array, find the product matching, and update its quantity
+        setBoughtItems((current) =>
+          current.map((obj) => {
+            if (obj.name === shoppedItem.name) {
+              return {
+                ...obj,
+                quantity: Number(obj.quantity) + Number(inputValue),
+              };
+            }
+            return obj;
+          })
+        );
+      } else {
+        // if there was no object matching inside the array, add it to the list instead
+        setBoughtItems((prev) => [...prev, shoppedItem]);
+      }
+    }
   };
 
   return (
