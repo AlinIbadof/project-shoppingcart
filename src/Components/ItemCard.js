@@ -1,15 +1,20 @@
 import React from "react";
 
-function ItemCard() {
+function ItemCard(props) {
   return (
-    <div className="item-card">
-      <div>Product: title</div>
+    <div className="item-card" id={props.index}>
+      <div>Product: {props.name}</div>
       <div>Product image</div>
       <div>
         <label htmlFor="quantity">Quantity: </label>
-        <input id="quantity" type="number" placeholder="1"></input>
+        <input
+          id="quantity"
+          type="number"
+          placeholder="1"
+          className="quantity"
+        ></input>
       </div>
-      <button>Add to cart</button>
+      <button onClick={props.addToCart}>Add to cart</button>
     </div>
   );
 }
