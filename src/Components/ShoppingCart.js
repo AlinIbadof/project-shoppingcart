@@ -7,9 +7,13 @@ function ShoppingCart(props) {
       <ul>
         {props.items.map((item) => {
           return (
-            <li>
-              {item.name} x{item.quantity}, Price: ${item.quantity * item.price}
-            </li>
+            <div>
+              <li>
+                {item.name} x{item.quantity}, Price: $
+                {item.quantity * item.price}
+              </li>
+              <button onClick={props.removeFromCart}>Remove from cart</button>
+            </div>
           );
         })}
         <li>

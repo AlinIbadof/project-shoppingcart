@@ -32,6 +32,9 @@ function ShoppingPage() {
       //Checking the boughtItems array to see if the product is already present
       if (boughtItems.filter((e) => e.name === shoppedItem.name).length > 0) {
         // if it is indeed present, map through the whole array, find the product matching, and update its quantity
+
+        //small bug, the second time add to cart is pressed, instead of taking the existing value it takes the one from the input
+        //and doubles it.
         setBoughtItems((current) =>
           current.map((obj) => {
             if (obj.name === shoppedItem.name) {
@@ -50,10 +53,13 @@ function ShoppingPage() {
     }
   };
 
+  // to be added
+  const removeFromCart = () => {};
+
   return (
     <div>
       <h1>Shopping Page</h1>
-      <ShoppingCart items={boughtItems} />
+      <ShoppingCart items={boughtItems} removeFromCart={removeFromCart} />
       <div className="item-container">
         <ItemCard
           name={items[0].name}
