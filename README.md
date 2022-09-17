@@ -11,8 +11,5 @@ It is a simple 3 page site, and in the Shopping Page there are 8 different produ
 
 **To improve / add**:
 
-- Better Styling;
-- Providing functionality for the Remove from Cart button;
-- Fix Routing issues (didn't take into consideration the initial link for the Github Pages)
 - Look into bug that occurs the second time the user presses the Add to Cart button (instead of updating the present quantity, it takes the input value and doubles it).
 - ...

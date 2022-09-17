@@ -8,10 +8,10 @@ import ShoppingPage from "./Components/ShoppingPage";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/project-shoppingcart">
         <Nav />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/Home" element={<HomePage />} />
           <Route path="/Shopping" element={<ShoppingPage />} />
           <Route path="/About" element={<AboutPage />} />
         </Routes>

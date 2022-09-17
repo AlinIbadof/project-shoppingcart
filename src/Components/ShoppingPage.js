@@ -4,14 +4,14 @@ import ShoppingCart from "./ShoppingCart";
 
 function ShoppingPage() {
   const [items, setItems] = useState([
-    { name: "Product 1", id: 1, price: 10 },
-    { name: "Product 2", id: 2, price: 12 },
-    { name: "Product 3", id: 3, price: 14 },
-    { name: "Product 4", id: 4, price: 16 },
-    { name: "Product 5", id: 5, price: 18 },
-    { name: "Product 6", id: 6, price: 20 },
-    { name: "Product 7", id: 7, price: 22 },
-    { name: "Product 8", id: 8, price: 24 },
+    { name: "Sweater", id: 1, price: 10 },
+    { name: "Shirt", id: 2, price: 12 },
+    { name: "Shoes", id: 3, price: 14 },
+    { name: "Jeans", id: 4, price: 16 },
+    { name: "Vest", id: 5, price: 18 },
+    { name: "Necklace", id: 6, price: 20 },
+    { name: "Bracelet", id: 7, price: 22 },
+    { name: "Beanie", id: 8, price: 24 },
   ]);
   const [boughtItems, setBoughtItems] = useState([]);
 
@@ -54,52 +54,82 @@ function ShoppingPage() {
   };
 
   // to be added
-  const removeFromCart = () => {};
+  const removeFromCart = (event) => {
+    // gets the value of the product for which the remove button is clicked
+    let value =
+      event.target.parentNode.getElementsByClassName("getThisValue")[0]
+        .textContent;
+
+    // next, it sets the Bought Items array by iterating through each value (using filter) and returning the array with values that
+    // do not match the variable "value"
+    console.log(value);
+    setBoughtItems((currentArray) =>
+      currentArray.filter((item) => {
+        return item.name !== value;
+      })
+    );
+  };
 
   return (
-    <div>
-      <h1>Shopping Page</h1>
+    <div className="shopping-page">
+      <h2>Shopping Page</h2>
       <ShoppingCart items={boughtItems} removeFromCart={removeFromCart} />
       <div className="item-container">
         <ItemCard
           name={items[0].name}
           addToCart={addToCart}
           index={items[0].id}
+          productImage={process.env.PUBLIC_URL + "/P01.jpg"}
+          itemPrice={items[0].price}
         />
         <ItemCard
           name={items[1].name}
           addToCart={addToCart}
           index={items[1].id}
+          productImage={process.env.PUBLIC_URL + "/P02.jpg"}
+          itemPrice={items[1].price}
         />
         <ItemCard
           name={items[2].name}
           addToCart={addToCart}
           index={items[2].id}
+          productImage={process.env.PUBLIC_URL + "/P03.jpg"}
+          itemPrice={items[2].price}
         />
         <ItemCard
           name={items[3].name}
           addToCart={addToCart}
           index={items[3].id}
+          productImage={process.env.PUBLIC_URL + "/P04.jpg"}
+          itemPrice={items[3].price}
         />
         <ItemCard
           name={items[4].name}
           addToCart={addToCart}
           index={items[4].id}
+          productImage={process.env.PUBLIC_URL + "/P05.jpg"}
+          itemPrice={items[4].price}
         />
         <ItemCard
           name={items[5].name}
           addToCart={addToCart}
           index={items[5].id}
+          productImage={process.env.PUBLIC_URL + "/P06.jpg"}
+          itemPrice={items[5].price}
         />
         <ItemCard
           name={items[6].name}
           addToCart={addToCart}
           index={items[6].id}
+          productImage={process.env.PUBLIC_URL + "/P07.jpg"}
+          itemPrice={items[6].price}
         />
         <ItemCard
           name={items[7].name}
           addToCart={addToCart}
           index={items[7].id}
+          productImage={process.env.PUBLIC_URL + "/P08.jpg"}
+          itemPrice={items[7].price}
         />
       </div>
     </div>

@@ -8,11 +8,11 @@ function Nav() {
   };
 
   return (
-    <div>
+    <div className="nav-div">
       <nav>
         <h3>Shopping Cart Project</h3>
         <ul className="nav-links">
-          <Link to="/" style={linkStyle}>
+          <Link to="/Home" style={linkStyle}>
             <li>Home</li>
           </Link>
           <Link to="/Shopping" style={linkStyle}>
