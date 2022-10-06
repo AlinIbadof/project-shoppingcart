@@ -12,4 +12,5 @@ It is a simple 3 page site, and in the Shopping Page there are 8 different produ
 **To improve / add**:
 
 - Look into bug that occurs the second time the user presses the Add to Cart button (instead of updating the present quantity, it takes the input value and doubles it).
+- Add responsiveness, improve CSS.
 - ...
